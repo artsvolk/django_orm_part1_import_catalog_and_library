@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block heading %}{{ book.title }}{% endblock %}
+{% block content %}
+<div class="book">
+    <h2>{{ book.title }}</h2>
+    <p><strong>Автор:</strong> {{ book.author }}</p>
+    <p><strong>Дата публикации:</strong> {{ book.pub_date|date:"Y-m-d" }}</p>
+</div>
+<div class="nav-dates">
+    {% if prev_date %}
+        <a href="{% url 'books:book-detail' pub_date=prev_date|date:'Y-m-d' %}">&lt; {{ prev_date|date:"Y-m-d" }}</a>
+    {% endif %}
+    {% if prev_date and next_date %} | {% endif %}
+    {% if next_date %}
+        <a href="{% url 'books:book-detail' pub_date=next_date|date:'Y-m-d' %}">{{ next_date|date:"Y-m-d" }} &gt;</a>
+    {% endif %}
+</div>
+<p><a href="{% url 'books:book-list' %}" class="btn">← Назад к каталогу книг</a></p>
+{% endblock %}

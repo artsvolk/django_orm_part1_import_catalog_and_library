@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Каталог{% endblock %}</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+        h1 {
+            color: #0d6efd;
+            margin-bottom: 30px;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        .phone-card, .book {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            text-decoration: none;
+            color: inherit;
+        }
+        .phone-card h2, .book h2 {
+            color: #0d6efd;
+            margin-top: 0;
+            font-size: 1.4rem;
+        }
+        .phone-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            background: #f5f5f5;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+        .sort-links {
+            margin-bottom: 20px;
+        }
+        .sort-links a {
+            margin-right: 12px;
+            text-decoration: none;
+            color: #0d6efd;
+        }
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .btn:hover {
+            background-color: #565e64;
+        }
+    </style>
+</head>
+<body>
+    <h1>{% block heading %}Каталог телефонов{% endblock %}</h1>
+    {% block content %}{% endblock %}
+</body>
+</html>

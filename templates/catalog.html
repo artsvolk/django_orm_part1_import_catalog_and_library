@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block heading %}Каталог телефонов{% endblock %}
+{% block content %}
+<div class="sort-links">
+    Сортировать по:
+    <a href="?sort=name">названию</a>
+    <a href="?sort=min_price">начиная с дешёвых</a>
+    <a href="?sort=max_price">начиная с дорогих</a>
+</div>
+<div class="content">
+    {% for phone in phones %}
+        <a href="/{{ phone.slug }}/" class="phone-card">
+            <img src="{% static phone.image %}" alt="{{ phone.name }}" height="300" style="width:100%; object-fit:contain; background:#f5f5f5; border-radius:4px;">
+            <h2>{{ phone.name }}</h2>
+            <p><strong>Стоимость:</strong> {{ phone.price }} ₽</p>
+        </a>
+    {% endfor %}
+</div>
+{% endblock %}
