@@ -1,7 +1,7 @@
 # Домашнее задание: Работа с ORM, часть 1
 
 ## Описание
-Проект выполнен в учебных целях. Реализует:
+Проект реализует:
 - Импорт каталога телефонов из CSV-файла в PostgreSQL с помощью Django ORM
 - Импорт каталога книг из жёстко заданного списка в Python-скрипте
 - Отображение данных в веб-интерфейсе через отдельные маршруты
@@ -9,7 +9,7 @@
 ## Функционал
 
 ### Телефоны (`/`)
-- Импорт данных из `phones.csv` через скрипт `import_phones.py`
+- Импорт данных из `phones.csv` через Django management command `import_phones`
 - Отображение списка телефонов на главной странице
 - Детальная страница по уникальному URL (`/<slug>/`)
 - Сортировка по названию, цене (от дешёвых, от дорогих)
@@ -28,47 +28,47 @@
 
 ## Установка и запуск
 1. Клонируйте репозиторий:
-   ```bash
-   git clone git@github.com:artsvolk/django_orm_part1_import_catalog_and_library.git
-   cd django_orm_part1_import_catalog_and_library
-   ```
+```bash
+git clone git@github.com:artsvolk/django_orm_part1_import_catalog_and_library.git
+cd django_orm_part1_import_catalog_and_library
+```
 
 2. Создайте виртуальное окружение и активируйте его:
-   ```bash
-   python -m venv .venv
-   .venv\Scripts\activate  # Windows
-   ```
+```bash
+python -m venv .venv
+.venv\Scripts\activate  # Windows
+```
 
 3. Установите зависимости:
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+pip install -r requirements.txt
+```
 
 4. Настройте подключение к PostgreSQL:
-   ```bash
-   cp main/settings.py.example main/settings.py
-   ```
-   Откройте `main/settings.py` и укажите свой пароль от PostgreSQL в поле `PASSWORD`.
+```bash
+cp main/settings.py.example main/settings.py
+```
+Откройте `main/settings.py` и укажите свой пароль от PostgreSQL в поле `PASSWORD`.
 
 5. Примените миграции:
-   ```bash
-   python manage.py migrate
-   ```
+```bash
+python manage.py migrate
+```
 
 6. Запустите импорт данных:
-   ```bash
-   python import_books.py
-   python import_phones.py
-   ```
+```bash
+python manage.py import_phones
+python import_books.py
+```
 
 7. Запустите сервер:
-   ```bash
-   python manage.py runserver
-   ```
+```bash
+python manage.py runserver
+```
 
 8. Откройте в браузере:  
-   👉 [http://127.0.0.1:8000](http://127.0.0.1:8000) — каталог телефонов  
-   👉 [http://127.0.0.1:8000/books/](http://127.0.0.1:8000/books/) — каталог книг
+👉 [http://127.0.0.1:8000](http://127.0.0.1:8000) — каталог телефонов  
+👉 [http://127.0.0.1:8000/books/](http://127.0.0.1:8000/books/) — каталог книг
 
 > **Примечание**: В базе данных находятся 4 уникальные книги и 3 телефона. Все данные загружаются автоматически.
 
@@ -110,7 +110,6 @@ django_orm_part1_import_catalog_and_library/
 ├── .gitignore
 ├── books.csv
 ├── import_books.py
-├── import_phones.py
 ├── manage.py
 ├── phones.csv
 └── requirements.txt
